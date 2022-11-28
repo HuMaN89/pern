@@ -1,6 +1,5 @@
 const {Type} = require('../models/models')
 const ApiError = require('../error/ApiError')
-const { json } = require('sequelize')
 
 class TypeController {
   async create(req, res) {
@@ -10,6 +9,8 @@ class TypeController {
   }
 
   async getAll(req,res) {
+    const type = await Type.findAll()
+    return res.json(type)
 
   }
 }

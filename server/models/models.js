@@ -32,7 +32,7 @@ const Rating = sequelize.define('rating', {
   id: {type: DataTypes.INTEGER, primaryKey: true,autoIncrement:true},
   rate: {type: DataTypes.INTEGER, allowNull: false}
 })
-const DeviceInfo = sequelize.define('device_info)', {
+const DeviceInfo = sequelize.define('device_info', {
   id: {type: DataTypes.INTEGER, primaryKey: true,autoIncrement:true},
   title: {type: DataTypes.STRING,  allowNull: false},
   description: {type: DataTypes.STRING,  allowNull: false}
@@ -64,7 +64,7 @@ Rating.belongsTo(Device)
 Device.hasMany(BasketDevice)
 BasketDevice.belongsTo(Device)
 
-Device.hasMany(DeviceInfo)
+Device.hasMany(DeviceInfo, {as: 'info'})
 DeviceInfo.belongsTo(Device)
 
 Type.belongsToMany(Brand, {through: TypeBrand})
